@@ -58,12 +58,12 @@ EOF
     git clone --bare $PROJECT $PROJECT.git
 	touch $PROJECT.git/git-daemon-export-ok
 
-	scp -r $PROJECT.git exbmc:~/git/$PROJECT.git
+	scp -r $PROJECT.git $SERVER:~/git/$PROJECT.git
 
-	ssh exbmc 'cd ~/git/'$PROJECT'.git && git --bare update-server-info && cd hooks && mv post-update.sample post-update && chmod a+x post-update'
+	ssh $SERVER 'cd ~/git/'$PROJECT'.git && git --bare update-server-info && cd hooks && mv post-update.sample post-update && chmod a+x post-update'
 
     cd $CURRENT_DIR
-    git clone exbmc:~/git/$PROJECT.git
+    git clone $SERVER:~/git/$PROJECT.git
     cd $PROJECT
 
     echo "Get started working!"
