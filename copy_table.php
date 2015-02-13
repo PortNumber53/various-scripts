@@ -211,4 +211,3 @@ switch ($action)
 
 
 echo "\n";
-?>
